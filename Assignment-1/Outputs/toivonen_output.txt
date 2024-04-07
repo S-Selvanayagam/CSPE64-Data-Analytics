@@ -1,0 +1,41 @@
+Frequent Item sets from the sample :
+Items of size 1 : 
+[['101'], ['102'], ['97'], ['98'], ['99']]
+Items of size 2 : 
+[['97', '98'], ['97', '99']]
+
+Item sets in negative border from the sample :
+Items of size 1 : 
+[['100'], ['103'], ['104'], ['105'], ['106'], ['107'], ['108']]
+Items of size 2 : 
+[['101', '102'], ['101', '97'], ['101', '98'], ['101', '99'], ['102', '97'], ['102', '98'], ['102', '99'], ['98', '99']]
+******************************************
+
+Frequent items in the entire data set:
+Items of size 1 : 
+[['97'], ['98'], ['99']]
+
+Is the negative border of sample in the frequent Item List of whole data set : False
+******************************************
+
+Frequent items in the entire data set:
+Items of size 1 : 
+[['97'], ['98'], ['99']]
+Items of size 2 : 
+[['97', '99']]
+
+Is the negative border of sample in the frequent Item List of whole data set : False
+******************************************
+
+Frequent items in the entire data set:
+Items of size 1 : 
+[['97'], ['98'], ['99']]
+Items of size 2 : 
+[['97', '99']]
+
+Is the negative border of sample in the frequent Item List of whole data set : False
+Duration: 0.0006740093231201172
+No. of Iterations : 1
+Fraction of transactions used : 0.5
+Support : 10
+Confidence : 0.8
