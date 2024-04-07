@@ -5,8 +5,8 @@ from itertools import combinations
 startTime = time.time()
 
 # Set the support threshold and input/output file paths
-supportThreshold = 10
-inputFile = './DataSet/small1.csv'
+supportThreshold = 300
+inputFile = './DataSet/big.csv'
 outputFile = "./Outputs/son_output.txt"
 
 # Initialize SparkContext
@@ -166,3 +166,5 @@ with open(outputFile, 'w') as file:
 endTime = time.time()
 print("SON Algorithm Execution Completed!")
 print("Duration: ", endTime - startTime)
+
+#Time complexity - O((m/n) * r) - m is frequent subsets, n number of transactions, r is the number of chunks

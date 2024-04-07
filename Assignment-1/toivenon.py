@@ -4,8 +4,8 @@ import itertools
 import time
 
 # Global variables
-support = 10  
-samplingRate = 0.5
+support = 300  
+samplingRate = 0.2
 fraction = 0.8
 canFreqItems = {}
 negBorder = {}
@@ -114,23 +114,20 @@ def findMaxLenOfItem(my_list):
     """Find maximum length of item in list."""
     return max(len(item) for item in my_list)
 
-def extractList(my_list,filename):
+def extractList(my_list):
     """Extract items from the list."""
     maxLen = findMaxLenOfItem(my_list)
     for size in range(1, maxLen + 1):
         new_list = [item for item in my_list if len(item) == size]
         new_list.sort()
         print("Items of size %d : " % size)
-        output_file.write("Items of size %d : " % size + "\n")
         print(new_list)
-        output_file.write(str(new_list) + "\n")
 
 def compare(list1, list2):
     """Compare two lists."""
     return any(item in list2 for item in list1)
 
 if __name__ == '__main__':
-    output_file = open("./Outputs/toivonen_output.txt", "w")
     startTime = time.time()
 
     repeatToivonen = True
@@ -151,16 +148,14 @@ if __name__ == '__main__':
             _pass += 1
 
         print("Frequent Item sets from the sample :")  
-        output_file.write("Frequent Item sets from the sample :\n")
         canFreqItemsList = getList(canFreqItems)
         canFreqItemsList = convertTupleToList(canFreqItemsList)    
-        extractList(canFreqItemsList,output_file)
+        extractList(canFreqItemsList)
 
         print("\nItem sets in negative border from the sample :")  
-        output_file.write("\nItem sets in negative border from the sample :\n")
         negBorderList = getList(negBorder)
         negBorderList = convertTupleToList(negBorderList)    
-        extractList(negBorderList,output_file)
+        extractList(negBorderList)
 
         line = getRandomSample(1)
         lenFreqItemsCurItr = 1
@@ -173,23 +168,15 @@ if __name__ == '__main__':
 
             print("******************************************")
             print("\nFrequent items in the entire data set:")
-            output_file.write("******************************************\n")
-            output_file.write("\nFrequent items in the entire data set:\n")
             FreqItemList = getList(FreqItems)
             FreqItemList = convertTupleToList(FreqItemList)
-            extractList(FreqItemList,output_file)
+            extractList(FreqItemList)
 
             flag = compare(negBorderList, FreqItemList)
             print("\nIs the negative border of sample in the frequent Item List of whole data set : " + str(flag))
-            output_file.write("\nIs the negative border of sample in the frequent Item List of whole data set : " + str(flag) + "\n")
             repeatToivonen = flag
 
         endTime = time.time()
-        print("Toivonen Algorithm Execution Completed!")
         print("Duration: ", endTime - startTime)
-        output_file.write("Duration: " + str(endTime - startTime) + "\n")
-        output_file.write("No. of Iterations : " + str(noOfItr) + "\n")
-        output_file.write("Fraction of transactions used : " + str(samplingRate) + "\n")
-        output_file.write("Support : " + str(support) + "\n")
-        output_file.write("Confidence : " + str(fraction) + "\n")
-        output_file.close()
+        print("No. of Iterations : %d" % noOfItr)
+        print("Fraction of transactions used : %f" % samplingRate)
